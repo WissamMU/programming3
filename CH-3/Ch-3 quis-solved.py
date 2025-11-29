@@ -17,7 +17,7 @@
 print("=== Q1 ===")
 path1 = "C:\\Users\\Documents"
 path2 = r"C:\Users\Documents"
-multiline = "السطر الأول\nالسطر الثاني"
+multiline = "Line One\nLine Two"
 
 print("1.", path1)
 print("2.", path2)
@@ -35,13 +35,13 @@ print()
 
 print("=== Q2 ===")
 # الطريقة 1: الجمع
-str1 = "لدي " + "5" + " كتب و " + "3" + " أقلام"
+str1 = "I have " + "5" + " books and " + "3" + " pens"
 
 # الطريقة 2: format()
-str2 = "لدي {} كتب و {} أقلام".format(5, 3)
+str2 = "I have {} books and {} pens".format(5, 3)
 
 # الطريقة 3: printf-style
-str3 = "لدي %d كتب و %d أقلام" % (5, 3)
+str3 = "I have %d books and %d pens" % (5, 3)
 
 print("1.", str1)
 print("2.", str2)
@@ -52,18 +52,19 @@ print()
 # ----------------------------------------------------------
 # Q3: تنسيق الأرقام في السلاسل
 # ----------------------------------------------------------
-# للرقم x = 123.456789
+# للرقم x = 1234.56789
 # اطبع القيمة بالتنسيقات التالية:
 # 1. محصور في 10 خانات مع منزلتين عشريتين
 # 2. محصور في 12 خانة مع 4 منازل عشرية
 # 3. مع فواصل الآلاف ومنزلتين عشريتين
 
 print("=== Q3 ===")
-x = 123.456789
+x = 1234.56789
 
-print("1. {:10.2f}".format(x))
-print("2. {:12.4f}".format(x))
-print("3. {:,.2f}".format(x))
+print("1 = {:010.2f}".format(x))
+print("2 = {:012.4f}".format(x))
+print("3 = {:010,.2f}".format(x))
+
 print()
 
 
@@ -90,10 +91,10 @@ lower_s2 = s2.lower()
 # 3. الطول
 length = len(combined)
 
-print("المدمجة:", combined)
-print("s1 كبيرة:", upper_s1)
-print("s2 صغيرة:", lower_s2)
-print("الطول:", length)
+print("Combined:", combined)
+print("s1 uppercase:", upper_s1)
+print("s2 lowercase:", lower_s2)
+print("Length:", length)
 print()
 
 
@@ -103,7 +104,7 @@ print()
 # للسلسلة: text = "Python programming is fun and Python is powerful"
 # ابحث عن:
 # 1. أول ظهور لكلمة "Python"
-# 2. آخر ظهور لكلمة "Python" 
+# 2. آخر ظهور لكلمة "Python"
 # 3. هل تبدأ السلسلة بـ "Python"؟
 # 4. هل تنتهي السلسلة بـ "powerful"؟
 
@@ -115,10 +116,10 @@ last_index = text.rindex("Python")
 starts_with = text.startswith("Python")
 ends_with = text.endswith("powerful")
 
-print("أول ظهور لـ Python:", first_index)
-print("آخر ظهور لـ Python:", last_index)
-print("تبدأ بـ Python:", starts_with)
-print("تنتهي بـ powerful:", ends_with)
+print("First occurrence of Python:", first_index)
+print("Last occurrence of Python:", last_index)
+print("Starts with Python:", starts_with)
+print("Ends with powerful:", ends_with)
 print()
 
 
@@ -143,9 +144,9 @@ joined_fruits = "-".join(fruits_list)
 spaced_text = "  hello world  "
 stripped_text = spaced_text.strip()
 
-print("المقسمة:", fruits_list)
-print("المدمجة:", joined_fruits)
-print("بعد إزالة الفراغات:", repr(stripped_text))
+print("Split:", fruits_list)
+print("Joined:", joined_fruits)
+print("After stripping:", repr(stripped_text))
 print()
 
 
@@ -181,10 +182,10 @@ repeated = "Hi " * 3
 
 # 2. جدول الضرب
 print("1.", repeated)
-print("2. جدول ضرب 3:")
+print("2. Multiplication table for 3:")
 for i in range(1, 6):
     result = "3" * i
-    print(f"3 × {i} = {result}")
+    print(f"3 x {i} = {result}")
 print()
 
 
@@ -195,20 +196,23 @@ print()
 # ثم يقسم المدخلات ويحولها للأنواع المناسبة ويطبع أعلى درجة
 
 print("=== Q9 ===")
+
+
 def process_student_data():
     # محاكاة الإدخال - في الواقع نستخدم input()
-    # line = input("أدخل بيانات الطالب: ")
+    # line = input("Enter student data: ")
     line = "20510 85 60 80 Sami"  # لمحاكاة الإدخال
-    
+
     items = line.split()
     id = int(items[0])
     eng = float(items[1])
     math = float(items[2])
     prog = float(items[3])
     name = items[4]
-    
+
     max_grade = max(eng, math, prog)
-    print(f"{id} {name} أعلى درجة: {max_grade}")
+    print(f"{id} {name} Highest grade: {max_grade}")
+
 
 process_student_data()
 print()
@@ -228,7 +232,7 @@ search_word = "the"
 lower_text = text.lower()
 count = lower_text.count(search_word)
 
-print(f"كلمة '{search_word}' تظهر {count} مرات")
+print(f"Word '{search_word}' appears {count} times")
 print()
 
 
@@ -238,7 +242,7 @@ print()
 # اطبع الترميز Unicode للأحرف من 1570 إلى 1580 مع الأحرف العربية المقابلة
 
 print("=== Q11 ===")
-print("الترميز Unicode للأحرف العربية:")
+print("Arabic Unicode characters:")
 for i in range(1570, 1581):
     print(f"{i} = {chr(i)}")
 print()
@@ -251,18 +255,18 @@ print()
 # 2. أضف سطرين إضافيين للملف نفسه
 
 print("=== Q12 ===")
-# 1. إنشاء الملف وكتابة 3 أسطر
-with open("test_file.txt", "w", encoding="utf-8") as f:
-    f.write("السطر الأول\n")
-    f.write("السطر الثاني\n")
-    f.write("السطر الثالث\n")
 
-# 2. إضافة سطرين
-with open("test_file.txt", "a", encoding="utf-8") as f:
-    f.write("السطر الرابع (مضاف)\n")
-    f.write("السطر الخامس (مضاف)\n")
+loc = "CH-3/testing.txt"
 
-print("تم إنشاء وتعديل الملف بنجاح")
+with open(loc, "w") as file:
+    file.write("Hello, World!\n")
+
+with open(loc, "a") as file:
+    file.write("append line one\n")
+    file.write("append line two\n")
+
+print("task complete")
+
 print()
 
 
@@ -275,24 +279,24 @@ print()
 # 3. التكرار المباشر على الملف
 
 print("=== Q13 ===")
+
 # 1. قراءة كاملة
-with open("test_file.txt", "r", encoding="utf-8") as f:
-    content = f.read()
-    print("1. القراءة الكاملة:")
-    print(content)
+
+with open(loc,"r") as file:
+    print('\nusing read : \n' , file.read())
 
 # 2. قراءة كقائمة
-with open("test_file.txt", "r", encoding="utf-8") as f:
-    lines = f.readlines()
-    print("2. القراءة كقائمة:")
-    for i, line in enumerate(lines, 1):
-        print(f"   السطر {i}: {line.strip()}")
 
+print("="*25)
+with open(loc,"r") as file:
+    print('\nusing readlines : \n')
+    lines = file.readlines()
+    print(lines)
 # 3. التكرار المباشر
-print("3. التكرار المباشر:")
-with open("test_file.txt", "r", encoding="utf-8") as f:
-    for i, line in enumerate(f, 1):
-        print(f"   السطر {i}: {line.strip()}")
+    print('\nusing loop : \n')
+    for i in range(len(lines)):
+        print(lines[i])
+    
 print()
 
 
@@ -307,16 +311,19 @@ print()
 
 print("=== Q14 ===")
 # أولاً ننشئ الملف للاختبار
-with open("students.txt", "w", encoding="utf-8") as f:
-    f.write("20510 85 60 80 Sami\n")
-    f.write("20420 60 80 90 Rana\n")
-    f.write("20600 95 70 50 Jamil\n")
 
-# قراءة ومعالجة البيانات
-print("بيانات الطلاب:")
-with open("students.txt", "r", encoding="utf-8") as f:
-    for line in f:
-        items = line.strip().split()
+loc = "CH-3/students.txt"
+
+with open(loc , 'w') as file:
+    file.write("20510 85 60 80 Sami\n") 
+    file.write("20420 60 80 90 Rana\n") 
+    file.write("20600 95 70 50 Jamil\n") 
+
+print('\nStudent data:\n')
+
+with open(loc,'r') as file:
+    for line in file:
+        items = line.split()
         if len(items) >= 5:
             id = items[0]
             eng = float(items[1])
@@ -324,7 +331,8 @@ with open("students.txt", "r", encoding="utf-8") as f:
             prog = float(items[3])
             name = items[4]
             max_grade = max(eng, math, prog)
-            print(f"{id} {name}: أعلى درجة = {max_grade}")
+            print(f"{id} {name}: Highest grade = {max_grade}")
+
 print()
 
 
@@ -335,6 +343,8 @@ print()
 # 2. حول الرقم 66 إلى الحرف المقابل
 # 3. اطبع الحروف من 'A' إلى 'Z'
 
+
+
 print("=== Q15 ===")
 # 1. char to Unicode
 char_code = ord('A')
@@ -343,9 +353,9 @@ char_code = ord('A')
 char_from_code = chr(66)
 
 # 3. A to Z
-print("1. كود 'A':", char_code)
-print("2. الحرف من 66:", char_from_code)
-print("3. الحروف من A إلى Z:")
+print("1. Code of 'A':", char_code)
+print("2. Character from 66:", char_from_code)
+print("3. Letters from A to Z:")
 for i in range(ord('A'), ord('Z') + 1):
     print(chr(i), end=' ')
 print("\n")
@@ -379,10 +389,10 @@ def analyze_text(text):
     search_word = "the"  # في الواقع نستخدم input()
     search_count = lower_text.count(search_word)
     
-    print(f"عدد الكلمات: {word_count}")
-    print(f"عدد الجمل: {sentence_count}")
-    print(f"النص بحروف صغيرة: {lower_text}")
-    print(f"كلمة '{search_word}' تظهر {search_count} مرات")
+    print(f"Word count: {word_count}")
+    print(f"Sentence count: {sentence_count}")
+    print(f"Text in lowercase: {lower_text}")
+    print(f"Word '{search_word}' appears {search_count} times")
 
 sample_text = "Hello world! This is a test. How are you? I am fine."
 analyze_text(sample_text)
@@ -400,11 +410,11 @@ s1 = "Hello"
 s2 = "hello"
 s3 = "HELLO"
 
-print("بدون مراعاة حالة الحرف:")
+print("Case sensitive:")
 print(f"s1 == s2: {s1 == s2}")
 print(f"s1 == s3: {s1 == s3}")
 
-print("مع مراعاة حالة الحرف (بعد التحويل):")
+print("Case insensitive (after conversion):")
 print(f"s1.lower() == s2.lower(): {s1.lower() == s2.lower()}")
 print(f"s1.lower() == s3.lower(): {s1.lower() == s3.lower()}")
 print()
@@ -418,15 +428,15 @@ print()
 print("=== Q18 ===")
 test_string = "PythonProgramming"
 
-print(f"السلسلة: {test_string}")
-print(f"len(): {len(test_string)} - طول السلسلة")
-print(f"max(): {max(test_string)} - أعلى قيمة Unicode في السلسلة")
-print(f"min(): {min(test_string)} - أقل قيمة Unicode في السلسلة")
+print(f"String: {test_string}")
+print(f"len(): {len(test_string)} - String length")
+print(f"max(): {max(test_string)} - Highest Unicode value in string")
+print(f"min(): {min(test_string)} - Lowest Unicode value in string")
 
 number = 123
 converted = str(number)
-print(f"str(123): {converted} - تحويل الرقم إلى سلسلة")
-print(f"نوع str(123): {type(converted)}")
+print(f"str(123): {converted} - Convert number to string")
+print(f"Type of str(123): {type(converted)}")
 print()
 
 
@@ -439,8 +449,8 @@ print("=== Q19 ===")
 my_list = ['a', 'b', 'c', 'd']
 result_string = ", ".join(my_list)
 
-print(f"القائمة: {my_list}")
-print(f"السلسلة الناتجة: {result_string}")
+print(f"List: {my_list}")
+print(f"Result string: {result_string}")
 print()
 
 
@@ -456,9 +466,9 @@ def copy_file_with_line_numbers(source, destination):
             with open(destination, 'w', encoding='utf-8') as dest:
                 for line_num, line in enumerate(src, 1):
                     dest.write(f"{line_num}: {line}")
-        print(f"تم نسخ الملف من {source} إلى {destination} مع أرقام الأسطر")
+        print(f"File copied from {source} to {destination} with line numbers")
     except FileNotFoundError:
-        print("الملف المصدري غير موجود")
+        print("Source file not found")
 
 # اختبار الدالة
 copy_file_with_line_numbers("test_file.txt", "numbered_file.txt")
