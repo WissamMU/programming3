@@ -369,8 +369,12 @@ print("\n")
 # 2. يعد عدد الجمل (تفترض أن الجملة تنتهي بـ . أو ! أو ؟)
 # 3. يحول النص لأحرف صغيرة
 # 4. يبحث عن كلمة محددة يطلبها المستخدم
+#sample_text = "Hello world! This is a test. How are you? I am fine."
 
 print("=== Q16 ===")
+
+sample_text = "Hello world! This is a test. How are you? I am fine."
+
 def analyze_text(text):
     # 1. عدد الكلمات
     words = text.split()
@@ -394,7 +398,6 @@ def analyze_text(text):
     print(f"Text in lowercase: {lower_text}")
     print(f"Word '{search_word}' appears {search_count} times")
 
-sample_text = "Hello world! This is a test. How are you? I am fine."
 analyze_text(sample_text)
 print()
 
@@ -460,18 +463,15 @@ print()
 # اكتب برنامجاً ينسخ محتوى ملف إلى ملف آخر مع إضافة رقم لكل سطر
 
 print("=== Q20 ===")
-def copy_file_with_line_numbers(source, destination):
-    try:
-        with open(source, 'r', encoding='utf-8') as src:
-            with open(destination, 'w', encoding='utf-8') as dest:
-                for line_num, line in enumerate(src, 1):
-                    dest.write(f"{line_num}: {line}")
-        print(f"File copied from {source} to {destination} with line numbers")
-    except FileNotFoundError:
-        print("Source file not found")
 
-# اختبار الدالة
-copy_file_with_line_numbers("test_file.txt", "numbered_file.txt")
+with open(loc , "r") as file:
+    lines = file.readlines()
+    
+with open("CH-3/studentsCopy.txt" , "w") as file:
+    for i in range(len(lines)):
+        line = f"{i+1} : {lines[i]}"
+        file.write(line)
+        
 print()
 
 
