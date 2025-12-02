@@ -14,39 +14,45 @@
 
 print("=== Q1 ===")
 
-def safe_division():
-    try:
-        num1 = int(input("أدخل العدد الأول: "))
-        num2 = int(input("أدخل العدد الثاني: "))
-        result = num1 / num2
-        print(f"نتيجة القسمة: {result}")
-    except ZeroDivisionError:
-        print("خطأ: لا يمكن القسمة على الصفر!")
-    except ValueError:
-        print("خطأ: أدخل أرقاماً صحيحة فقط!")
 
-# اختبار الدالة
-safe_division()
+def div():
+    while True:  # keep looping until valid input
+        try:
+            print("Divide by zero try-except")
+            n1 = int(input("enter first number : "))
+            n2 = int(input("enter second number : "))
+            result = n1 / n2
+            print(f"{n1} / {n2} = {result}")
+            break  # exit loop when everything works
+        except ZeroDivisionError:
+            print("Error: you can't divide by Zero! Try again.\n")
+        except ValueError:
+            print("Error: enter numbers only! Try again.\n")
+
+
+div()
 print()
-
 
 # ----------------------------------------------------------
 # Q2: معالجة أنواع متعددة من الاستثناءات
 # ----------------------------------------------------------
-# اكتب كود يحول مدخل المستخدم إلى عدد صحيح
-# وعالج كلاً من ValueError و TypeError
+# اكتب دالة تطلب من المستخدم إدخال رقم، وتحاول تحويل هذا الإدخال إلى عدد صحيح باستخدام الدالة int().
+# يجب عليك معالجة الاستثناءات التالية:
+# ValueError إذا كان الإدخال غير صالح للتحويل إلى عدد صحيح.
+# TypeError إذا تم تمرير نوع غير مناسب للتحويل.
 
 print("=== Q2 ===")
 
 def convert_to_int():
     try:
-        user_input = input("أدخل عدداً صحيحاً: ")
+        user_input = input("Enter an integer: ")
         number = int(user_input)
-        print(f"العدد المحول: {number}")
+        print(f"Converted number: {number}")
     except ValueError:
-        print("خطأ: لا يمكن تحويل المدخل إلى عدد صحيح")
+        print("Error: Cannot convert input to integer")
     except TypeError:
-        print("خطأ: نوع البيانات غير مناسب")
+        print("Error: Data type is not appropriate")
+
 
 convert_to_int()
 print()
@@ -60,21 +66,24 @@ print()
 
 print("=== Q3 ===")
 
+
 def read_file_safely(filename):
     file = None
     try:
-        file = open(filename, 'r')
+        file = open(filename , 'r')
         content = file.read()
-        print("محتويات الملف:")
-        print(content)
+        print('file contents : ' , content)
     except FileNotFoundError:
-        print(f"خطأ: الملف {filename} غير موجود")
+        print(f"Error: File {filename} not found")
     finally:
         if file:
             file.close()
-            print("تم إغلاق الملف")
+            print("File closed successfully")
+
+        
 
 read_file_safely("example.txt")
+read_file_safely("testing.py")
 print()
 
 
@@ -85,13 +94,15 @@ print()
 
 print("=== Q4 ===")
 
+
 def handle_index_error():
     my_list = [1, 2, 3]
     try:
         print(my_list[5])
     except IndexError as e:
-        print(f"حدث خطأ في الفهرس: {e}")
-        print(f"نوع الخطأ: {type(e).__name__}")
+        print(f"Index error occurred: {e}")
+        print(f'Erorr type: {type(e)}')
+
 
 handle_index_error()
 print()
@@ -106,15 +117,17 @@ print()
 
 print("=== Q5 ===")
 
+
 def access_list_element():
     numbers = [10, 20, 30, 40, 50]
     try:
-        index = int(input("أدخل فهرس العنصر (0-4): "))
-        print(f"القيمة عند الفهرس {index}: {numbers[index]}")
+        index = int(input("Enter element index (0-4): "))
+        print(f"Value at index {index}: {numbers[index]}")
     except IndexError:
-        print("خطأ: الفهرس خارج نطاق القائمة")
+        print("Error: Index out of list range")
     except ValueError:
-        print("خطأ: أدخل رقماً صحيحاً فقط")
+        print("Error: Please enter an integer only")   
+
 
 access_list_element()
 print()
@@ -128,20 +141,22 @@ print()
 
 print("=== Q6 ===")
 
+
 def multiple_exceptions():
     try:
-        a = int(input("أدخل العدد الأول: "))
-        b = int(input("أدخل العدد الثاني: "))
-        result = a ** b  # عملية الأس
-        print(f"النتيجة: {a} ^ {b} = {result}")
+        a = int(input("Enter first number: "))
+        b = int(input("Enter second number: "))
+        result = a**b  # Power operation
+        print(f"Result: {a} ^ {b} = {result}")
     except ValueError:
-        print("خطأ: أدخل أرقاماً صحيحة فقط")
+        print("Error: Please enter integers only")
     except ZeroDivisionError:
-        print("خطأ: لا يمكن القسمة على الصفر")
+        print("Error: Cannot divide by zero")
     except OverflowError:
-        print("خطأ: النتيجة كبيرة جداً")
+        print("Error: Result is too large")
     except Exception as e:
-        print(f"خطأ غير متوقع: {e}")
+        print(f"Unexpected error: {e}")
+
 
 multiple_exceptions()
 print()
@@ -155,18 +170,19 @@ print()
 
 print("=== Q7 ===")
 
+
 def get_safe_float():
     while True:
         try:
-            user_input = input("أدخل عدداً عشرياً: ")
+            user_input = input("Enter a float number: ")
             number = float(user_input)
             return number
         except ValueError:
-            print("خطأ: أدخل عدداً عشرياً صحيحاً. حاول مرة أخرى")
+            print("Error: Please enter a valid float number. Try again")
 
-# اختبار الدالة
+
 result = get_safe_float()
-print(f"القيمة المدخلة: {result}")
+print(f"Entered value: {result}")
 print()
 
 
@@ -178,22 +194,19 @@ print()
 
 print("=== Q8 ===")
 
+
 def access_dictionary():
-    student_grades = {
-        "أحمد": 85,
-        "فاطمة": 92,
-        "محمد": 78,
-        "سارة": 95
-    }
-    
+    student_grades = {"أحمد": 85, "فاطمة": 92, "محمد": 78, "سارة": 95}
+
     try:
-        key = input("أدخل اسم الطالب: ")
+        key = input("Enter student name: ")
         grade = student_grades[key]
-        print(f"درجة {key}: {grade}")
+        print(f"Grade of {key}: {grade}")
     except KeyError:
-        print("خطأ: الاسم غير موجود في السجلات")
+        print("Error: Name not found in records")
     except Exception as e:
-        print(f"خطأ غير متوقع: {e}")
+        print(f"Unexpected error: {e}")
+
 
 access_dictionary()
 print()
@@ -206,16 +219,21 @@ print()
 
 print("=== Q9 ===")
 
-def try_except_else():
-    try:
-        num = int(input("أدخل عدداً صحيحاً: "))
-    except ValueError:
-        print("خطأ: أدخل عدداً صحيحاً فقط")
-    else:
-        print(f"تم إدخال العدد بنجاح: {num}")
-        print(f"مربع العدد: {num ** 2}")
 
-try_except_else()
+def access_dictionary():
+    student_grades = {"أحمد": 85, "فاطمة": 92, "محمد": 78, "سارة": 95}
+
+    try:
+        key = input("Enter student name: ")
+        grade = student_grades[key]
+        print(f"Grade of {key}: {grade}")
+    except KeyError:
+        print("Error: Name not found in records")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+
+access_dictionary()
 print()
 
 
@@ -227,78 +245,57 @@ print()
 
 print("=== Q10 ===")
 
+
 def safe_list_search():
-    fruits = ["تفاح", "موز", "برتقال", "فراولة"]
-    
+    fruits = ["apple", "banana", "orange"]
+
     try:
-        index = int(input("أدخل فهرس العنصر: "))
-        print(f"العنصر عند الفهرس {index}: {fruits[index]}")
+        index = int(input("Enter element index: "))
+        print(f"Element at index {index}: {fruits[index]}")
     except IndexError:
-        print("خطأ: الفهرس خارج نطاق القائمة")
+        print("Error: Index out of list range")
     except ValueError:
-        print("خطأ: أدخل رقماً صحيحاً فقط")
+        print("Error: Please enter an integer only")
+
 
 safe_list_search()
 print()
-
-
-# ----------------------------------------------------------
-# Q11: معالجة استثناءات التحويل بين الأنواع
-# ----------------------------------------------------------
-# اكتب كود يحول قائمة من السلاسل إلى أعداد ويعالج الأخطاء
-
-print("=== Q11 ===")
-
-def convert_strings_to_numbers():
-    string_list = ["10", "20", "ثلاثون", "40", "50.5"]
-    numbers = []
-    
-    for item in string_list:
-        try:
-            number = float(item)
-            numbers.append(number)
-        except ValueError:
-            print(f"لا يمكن تحويل '{item}' إلى عدد")
-    
-    print(f"الأعداد المحولة: {numbers}")
-
-convert_strings_to_numbers()
-print()
-
 
 # ----------------------------------------------------------
 # Q12: برنامج متكامل لإدارة الأخطاء
 # ----------------------------------------------------------
 # اكتب برنامجاً يحسب متوسط درجات الطلاب مع معالجة جميع الأخطاء المحتملة
 
-print("=== Q12 ===")
+print("=== Q11 ===")
+
 
 def calculate_average_grades():
     try:
-        num_students = int(input("أدخل عدد الطلاب: "))
+        num_students = int(input("Enter number of students: "))
         if num_students <= 0:
-            raise ValueError("عدد الطلاب يجب أن يكون موجباً")
-        
+            raise ValueError("Number of students must be positive")
+
         total = 0
         for i in range(num_students):
             try:
-                grade = float(input(f"أدخل درجة الطالب {i+1}: "))
+                grade = float(input(f"Enter grade for student {i+1}: "))
                 if grade < 0 or grade > 100:
-                    raise ValueError("الدرجة يجب أن تكون بين 0 و 100")
+                    raise ValueError("Grade must be between 0 and 100")
                 total += grade
             except ValueError as e:
-                print(f"خطأ في إدخال الدرجة: {e}")
+                print(f"Error in grade input: {e}")
                 return
-        
+
         average = total / num_students
-        print(f"متوسط الدرجات: {average:.2f}")
-        
+        print(f"Average grades: {average:.2f}")
+
     except ValueError as e:
-        print(f"خطأ في الإدخال: {e}")
+        print(f"Input error: {e}")
     except ZeroDivisionError:
-        print("خطأ: لا يمكن حساب المتوسط لعدد طلاب صفري")
+        print("Error: Cannot calculate average for zero students")
     except Exception as e:
-        print(f"خطأ غير متوقع: {e}")
+        print(f"Unexpected error: {e}")
+
 
 calculate_average_grades()
 print()
@@ -309,74 +306,26 @@ print()
 # ----------------------------------------------------------
 # اكتب دالة تتحقق من عمر المستخدم وتطلق استثناء إذا كان العمر غير منطقي
 
-print("=== Q13 ===")
+print("=== Q12 ===")
+
 
 def validate_age(age):
     if age < 0:
-        raise ValueError("العمر لا يمكن أن يكون سالباً")
-    elif age > 150:
-        raise ValueError("العمر غير منطقي")
+        raise ValueError("Age cannot be negative")
+    elif age > 110:
+        raise ValueError("Age is not logical")
     else:
-        print(f"العمر {age} مقبول")
+        print(f"Age {age} is acceptable")
+
 
 try:
     validate_age(25)
-    validate_age(-5)  # سيتسبب في استثناء
+    validate_age(-5)  # This will cause an exception
 except ValueError as e:
-    print(f"خطأ في التحقق: {e}")
+    print(f"Validation error: {e}")
 print()
 
 
-# ----------------------------------------------------------
-# Q14: إنشاء معالج استثناءات مخصص
-# ----------------------------------------------------------
-# اكتب دالة تعالج الاستثناءات بناءً على نوعها وتقدم رسائل مساعدة
-
-print("=== Q14 ===")
-
-def custom_exception_handler(operation_func):
-    try:
-        return operation_func()
-    except ZeroDivisionError:
-        return "خطأ: حاولت القسمة على الصفر - تأكد من أن المقام ليس صفراً"
-    except ValueError:
-        return "خطأ: قيمة غير صالحة - تأكد من إدخال أرقام فقط"
-    except IndexError:
-        return "خطأ: فهرس خارج النطاق - تحقق من حجم القائمة"
-    except Exception as e:
-        return f"خطأ غير متوقع: {e}"
-
-# اختبار المعالج المخصص
-def test_operation():
-    numbers = [1, 2, 3]
-    return numbers[5]  # سيتسبب في IndexError
-
-result = custom_exception_handler(test_operation)
-print(result)
-print()
-
-
-# ----------------------------------------------------------
-# Q15: سجل الأخطاء في ملف
-# ----------------------------------------------------------
-# اكتب برنامجاً يسجل جميع الأخطاء في ملف log بدلاً من عرضها للمستخدم
-
-print("=== Q15 ===")
-
-def log_errors_to_file():
-    try:
-        # عملية قد تسبب أخطاء
-        num = int("غير رقم")
-    except Exception as e:
-        with open("error_log.txt", "a", encoding="utf-8") as log_file:
-            import datetime
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            log_file.write(f"[{timestamp}] خطأ: {e}\n")
-        print("تم تسجيل الخطأ في الملف")
-
-log_errors_to_file()
-print("تم الانتهاء من تسجيل الأخطاء")
-print()
 
 
 # ==========================================================
