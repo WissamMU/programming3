@@ -7,20 +7,7 @@
 #     print(f'- "../../images/product/{FileN}/({i}).{ImageT}"')
 #     i += 1
 
-S = "what is world wide web : www"
-sf = "w"
-print("String: " + S)
-print("Looking for: " + sf)
-print()
-
-ib = iw = nw = 0
-while ib < len(S):
-    try:
-        iw = S.index(sf, ib)
-        print("{0} found at index {1}".format(sf, iw))
-        nw += 1
-        ib = iw + 1
-    except ValueError:
-        break
-
-print("word ({0}) found {1} times".format(sf, nw))
+numbers = {1, 2, 3}
+x = numbers.pop()   # هنا pop() تحذف عنصراً من المجموعة، وأيضاً تُرجِع هذا العنصر وتخزّنه في x
+print(x)            # يطبع العنصر الذي أرجعته pop()
+print(numbers)      # يطبع المجموعة بعد حذف هذا العنصر
